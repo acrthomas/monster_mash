@@ -47,7 +47,7 @@ class Game:
 			print("The monster didn't attack...")
 
 	def player_turn(self):
-		player_choice = input("Do you want to [A]ttack, [R]est or [Q]uit?").lower()
+		player_choice = input("Do you want to [A]ttack, [R]est or [Q]uit? ").lower()
 
 		if player_choice == 'a':
 			print("You attack {}!".format(self.monster))
