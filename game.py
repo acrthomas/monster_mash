@@ -28,6 +28,9 @@ class Game:
 			return None
 
 	def monster_turn(self):
+		print("~~~~~~~~~~~~~~VERSUS~~~~~~~~~~~~~~")
+		print("{}, HP: {}, EXP: {}".format(self.monster, self.monster.hit_points, self.monster.experience))
+		print('='*35 + "\n")
 		print("{} has challenged you to combat!".format(self.monster))
 		print("The monster lets loose a battlecry: {}!".format(self.monster.sound.upper()))
 
@@ -68,7 +71,7 @@ class Game:
 		elif player_choice == 'r':
 			self.player.rest()
 		elif player_choice == 'q':
-			print("Goodbye!")
+			print("Thanks for playing!\nGoodbye!")
 			sys.exit()
 		else:
 			self.player_turn()
@@ -84,13 +87,13 @@ class Game:
 		self.setup()
 
 		while self.player.hit_points and (self.monster or self.monsters):
-			print("\n" + '='*20)
+			print("\n" + '='*35)
 			print(self.player)
 			self.monster_turn()
-			print('-'*20)
+			print('-'*35)
 			self.player_turn()
 			self.cleanup()
-			print('\n'+'='*20)
+			print('\n'+'='*35)
 
 		if self.player.hit_points:
 			print("Congratulations! You have defeated all the monsters in your path. You WIN!")
