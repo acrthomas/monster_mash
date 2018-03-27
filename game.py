@@ -32,7 +32,7 @@ class Game:
 		print("{}, HP: {}, EXP: {}".format(self.monster, self.monster.hit_points, self.monster.experience))
 		print('='*35 + "\n")
 		print("{} has challenged you to combat!".format(self.monster))
-		print("The monster lets loose a battlecry: {}!".format(self.monster.sound.upper()))
+		print("The monster lets loose a deafening battlecry: {}!".format(self.monster.sound.upper()))
 
 		if self.monster.attack():
 			print("{} is attacking!".format(self.monster))
@@ -41,11 +41,11 @@ class Game:
 				if self.player.dodge():
 					print("You dodged the attack!")
 				else:
-					print("You got hit anyway!")
-					self.player.hit_points -= 1
+					print("You failed to dodge. {} hit you with {}!".format(self.monster, self.monster.weapon))
+					self.player.hit_points -= self.monster.attack()
 			else:
-				print("{} hit you for 1 point".format(self.monster))
-				self.player.hit_points -= 1
+				print("{} hit you with their {}".format(self.monster, self.monster.weapon))
+				self.player.hit_points -= self.monster.attack()
 		else:
 			print("The monster didn't attack...")
 
@@ -79,9 +79,8 @@ class Game:
 	def cleanup(self):
 		if self.monster.hit_points <= 0:
 			self.player.experience += self.monster.experience
-			print("You beat the monster, but look out! Here comes the next one!")
 			self.monster = self.get_next_monster()
-	
+			print("You beat the monster, but look out! Here comes the next one!")
 
 	def __init__(self):
 		self.setup()
@@ -100,5 +99,6 @@ class Game:
 		elif self.monster or self.monsters:
 			print("AUGH! The monsters proved too strong to overcome. You LOSE!")
 		sys.exit()
+
 
 Game()

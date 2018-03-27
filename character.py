@@ -2,19 +2,21 @@ import random
 
 from combat import Combat
 
+
 class Character(Combat):
 	attack_limit = 30
 	experience = 0
-	base_hit_points = 10
+	base_hit_points = 15
+	dodge_limit = 15
 
 	def attack(self):
 		roll = random.randint(1, self.attack_limit)
 		if self.weapon == 'sword':
 			roll += 1
 		elif self.weapon == 'axe':
-			roll += 2
-		elif self.weapon == 'bow':
 			roll += 4
+		elif self.weapon == 'bow':
+			roll += 3
 		return roll > 4
 
 	def get_weapon(self):
@@ -29,7 +31,6 @@ class Character(Combat):
 				return 'bow'
 		else:
 			return self.get_weapon()
-
 
 	def __init__(self, **kwargs):
 		self.name = input("Name Your Character: ")
