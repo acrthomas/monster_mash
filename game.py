@@ -41,8 +41,8 @@ class Game:
 				if self.player.dodge():
 					print("You dodged the attack!")
 				else:
-					print("You failed to dodge. {} hit you with their {}!".format(self.monster, self.monster.weapon))
-					self.player.hit_points -= self.monster.attack
+					print("You failed to dodge. {} hit you with {}!".format(self.monster, self.monster.weapon))
+					self.player.hit_points -= self.monster.attack()
 			else:
 				print("{} hit you with their {}".format(self.monster, self.monster.weapon))
 				self.player.hit_points -= self.monster.attack()
@@ -82,7 +82,6 @@ class Game:
 			self.monster = self.get_next_monster()
 			print("You beat the monster, but look out! Here comes the next one!")
 
-
 	def __init__(self):
 		self.setup()
 
@@ -100,5 +99,6 @@ class Game:
 		elif self.monster or self.monsters:
 			print("AUGH! The monsters proved too strong to overcome. You LOSE!")
 		sys.exit()
+
 
 Game()

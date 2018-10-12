@@ -5,8 +5,10 @@ from combat import Combat
 COLORS = [
 			'purple', 'blue', 'green', 'yellow', 'orange', 'emerald',
 			'ruby', 'sapphire', 'red', 'pink', 'gold', 'silver', 'amethyst',
-			'diamond', 'garnet', 'topaz', 'burgundy', 'maroon', 'crystal'
+			'diamond', 'garnet', 'topaz', 'burgundy', 'maroon', 'crystal',
+			'platinum',
 			]
+
 
 class Monster(Combat):
 
@@ -14,7 +16,7 @@ class Monster(Combat):
 	max_hit_points = 1
 	min_experience = 1
 	max_experience = 1
-	weapon = 'sword'
+	weapon = 'fists'
 	sound = 'roar'
 
 	def __init__(self, **kwargs):
@@ -28,14 +30,15 @@ class Monster(Combat):
 			setattr(self, key, value)
 
 	def __str__(self):
-		return "{} {}".format(self.color.title(),
-							  self.__class__.__name__)
+		return "{} {}".format(self.color.title(), self.__class__.__name__)
+
 
 class Goblin(Monster):
 	max_hit_points = 3
 	max_experience = 2
 	sound = 'squeak'
-	weapon = 'dagger'
+	weapon = 'its dagger'
+
 
 class Orc(Monster):
 	min_hit_points = 5
@@ -43,7 +46,8 @@ class Orc(Monster):
 	max_experience = 10
 	attack_limit = 14
 	sound = 'groooar'
-	weapon = 'cleaver'
+	weapon = 'its cleaver'
+
 
 class Troll(Monster):
 	min_hit_points = 3
@@ -52,7 +56,8 @@ class Troll(Monster):
 	max_experience = 6
 	attack_limit = 10
 	sound = 'gruah'
-	weapon = 'club'
+	weapon = 'its club'
+
 
 class Jabberwocky(Monster):
 	min_hit_points = 10
@@ -61,7 +66,8 @@ class Jabberwocky(Monster):
 	max_experience = 15
 	attack_limit = 19
 	sound = 'jibber jabber'
-	weapon = 'claws'
+	weapon = 'its claws'
+
 
 class Golem(Monster):
 	min_hit_points = 7
@@ -69,8 +75,9 @@ class Golem(Monster):
 	min_experience = 4
 	max_experience = 12
 	attack_limit = 16
-	sound = 'gruuuu'
-	weapon = 'fists'
+	sound = 'square up'
+	weapon = 'these hands'
+
 
 class Dragon(Monster):
 	min_hit_points = 15
@@ -79,4 +86,4 @@ class Dragon(Monster):
 	max_experience = 18
 	attack_limit = 22
 	sound = 'brimstone, hellfire and damnation'
-	weapon = 'firebreath'
+	weapon = 'its firebreath'
